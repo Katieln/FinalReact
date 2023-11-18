@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 
 import { products } from "../data/products";
+import {DetailsItem} from "./DetailsItem";
+
 
 
 export const DetailContainer = () => {
@@ -20,19 +22,17 @@ export const DetailContainer = () => {
         } );
 
         mypromise.then((response) => {
-     
                 const findById = response.find(
                 (item) => item.id === Number(id) );
-                setItem(findById);
-            
+                setItem(findById);  
+                console.log(findById)   ;    
         });
     }, [id]);
 
-
-
-    return 
+    return (
     <Container className="mt-4">
-   {JSON.stringify(item)}
+        {item ? <DetailsItem item={item} /> : <>Loading..</>}
+       
     </Container>
-    ;
+    );
 };

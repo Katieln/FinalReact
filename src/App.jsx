@@ -16,11 +16,12 @@ function App () {
    <NavBar/>
    <Routes>
     
-    <Route path="/" element={<ListContainer greeting="Hello Moon! ❤️ LUNA 🧟‍♀️😎🕸️"/>}/>
+    <Route path="/" element={<ListContainer greeting="owowowowo Hello Moon! ❤️ LUNA 🧟‍♀️😎🕸️"/>}/>
 
     <Route path="/category/:id" element={<ListContainer greeting="Hello Moon! ❤️ Categorias!!!! 🧟‍♀️😎🕸️"/>}/>
 
-    <Route path="/items/:id" element={<DetailContainer/>}/>
+    <Route path="/items/:id"
+    element={ <> <DetailContainer/> </>}/>
 
     <Route path='*' element={<Error404/>}/>
 
