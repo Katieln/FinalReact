@@ -31,6 +31,4 @@ export const products = [
         price: 1500,
         pictureURL: "https://one.cdnmega.com/images/viajes/covers/magia-turca-dubaui-1024x575_622b8bacdd02f.webp",
     },
-   
-
 ];
