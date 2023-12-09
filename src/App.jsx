@@ -16,7 +16,7 @@ function App () {
    <NavBar/>
    <Routes>
     
-    <Route path="/" element={<ListContainer greeting="owowowowo Hello Moon! ❤️ LUNA 🧟‍♀️😎🕸️"/>}/>
+    <Route path="/" element={<ListContainer greeting=" Hello Moon! holi ❤️ LUNA 🧟‍♀️😎🕸️"/>}/>
 
     <Route path="/category/:id" element={<ListContainer greeting="Hello Moon! ❤️ Categorias!!!! 🧟‍♀️😎🕸️"/>}/>
 
