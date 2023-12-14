@@ -36,7 +36,8 @@ export const Cart = () => {
     
         <button onClick = {clear}>Vaciar Carrito</button>
 
-
+<br/>
+<br/>
 
     <Form>
       <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -47,9 +48,19 @@ export const Cart = () => {
         </Form.Text>
       </Form.Group>
 
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Name</Form.Label>
+        <Form.Control type="text" placeholder="Write your Name" />
+        <Form.Text className="text-muted">
+        </Form.Text>
+      </Form.Group>
+
       <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" />
+        <Form.Label>Address</Form.Label>
+        <Form.Control type="text" placeholder="Address" />
+        <Form.Text className="text-muted">
+          We'll never share your address with anyone else.
+        </Form.Text>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Check me out" />
