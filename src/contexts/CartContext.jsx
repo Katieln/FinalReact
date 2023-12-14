@@ -14,13 +14,15 @@ export const CartProvider = ({ children }) => {
         return [...prev, item];
     });
 
+    console.log(items);
+
     const onRemove = (item) => 
        setItems((prev) => {
         return [...prev,item];
        });
 
     return (
-        <CartContext.Provider value = {{ items, clear }}>
+        <CartContext.Provider value = {{ items, clear, onAdd, onRemove }}>
             {children}
         </CartContext.Provider>
     );

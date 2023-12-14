@@ -1,4 +1,4 @@
-export const ItemCounter = () => {
+export const ItemCounter = ({onAdd}) => {
     return (
         <>
     <button>-</button>
@@ -6,6 +6,6 @@ export const ItemCounter = () => {
     <button>+</button>
     <br/>
     <br/>
-    <button> Agregar al carrito, Cuantas personas </button>
+    <button onClick={onAdd}> Agregar al carrito Cuantas personas </button>
     </>)
 }

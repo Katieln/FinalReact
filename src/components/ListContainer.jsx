@@ -1,15 +1,17 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 import Container from "react-bootstrap/Container";
 
 import { getFirestore, collection, getDocs, query, where} from "firebase/firestore";
 
-import { products } from "../data/products";
 import { ItemList } from "../components/ItemList";
+
 
 export const ListContainer = (props) => {
     const [items, setItems] = useState([]);
+
+
 
     const { id } = useParams();
 
@@ -66,7 +68,7 @@ export const ListContainer = (props) => {
  */
     return (
     <Container className="md-2" >
-        <h1>{props.greeting}</h1>
+        <h1>{props.greeting} </h1>
         <ItemList items={items}/>
     </Container>
     );

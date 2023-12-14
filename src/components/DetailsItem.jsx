@@ -1,3 +1,4 @@
+
 import { useContext } from 'react';
 import Card from 'react-bootstrap/Card';
 import { ItemCounter } from './ItemCounter';
@@ -7,7 +8,7 @@ export const DetailsItem = ({ item }) => {
 
   const {onAdd} = useContext(CartContext);
   const add = () => {
-    onAdd(item)
+    onAdd(item);
   };
 
     return (<Card style={{ width: '30rem' }}>
