@@ -1,21 +1,23 @@
 import { useContext } from "react";
-import { Container, Table } from "react-bootstrap";
+import { Container, Table, Form, Button } from "react-bootstrap";
 import { CartContext } from "../contexts/CartContext";
 
 export const Cart = () => {
 
     const { clear, items} = useContext(CartContext);
 
+   
     return (
     <Container className="mt-4">
         <h1> Productos seleccionados en el carrito para comprar </h1>
-<Table class="table table-bordered">
-  <thead>
+
+    <Table striped bordered hover>
+    <thead>
     <tr>
-      <th scope="col">Producto</th>
-      <th scope="col">Precio</th>
-      <th scope="col">Imagen</th>
-      <th scope="col">Eliminar Producto</th>
+      <th >Producto</th>
+      <th >Precio</th>
+      <th >Imagen</th>
+      <th >Eliminar Producto</th>
     </tr>
   </thead>
   <tbody>
@@ -26,13 +28,41 @@ export const Cart = () => {
       <td>
         <img src={item.pictureURL} width={150}/>
       </td>
-      <td > x </td>
+      <td > <button>x</button>  </td>
     </tr>
   ))}
   </tbody>
-</Table>
+    </Table>
     
         <button onClick = {clear}>Vaciar Carrito</button>
+
+
+
+    <Form>
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Email address</Form.Label>
+        <Form.Control type="email" placeholder="Enter email" />
+        <Form.Text className="text-muted">
+          We'll never share your email with anyone else.
+        </Form.Text>
+      </Form.Group>
+
+      <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Label>Password</Form.Label>
+        <Form.Control type="password" placeholder="Password" />
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="formBasicCheckbox">
+        <Form.Check type="checkbox" label="Check me out" />
+      </Form.Group>
+      <Button variant="primary" type="submit">
+        Submit
+      </Button>
+    </Form>
+  
+
+
+
     </Container>);
 
 };
+
