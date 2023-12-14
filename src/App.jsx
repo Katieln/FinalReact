@@ -11,8 +11,6 @@ import { CartProvider } from './contexts/CartContext';
 
 import "./App.css"
 
-
-
 function App () {
   return( <CartProvider>
   <BrowserRouter>

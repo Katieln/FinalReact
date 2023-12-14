@@ -14,8 +14,7 @@ export const CartProvider = ({ children }) => {
         return [...prev, item];
     });
 
-    console.log(items);
-
+    
     const onRemove = (item) => 
        setItems((prev) => {
         return [...prev,item];
