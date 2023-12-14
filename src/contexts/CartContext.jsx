@@ -7,7 +7,17 @@ export const CartProvider = ({ children }) => {
 
     const [items, setItems] = useState([]);
 
-    const clear = () => setItems([])
+    const clear = () => setItems([]);
+
+    const onAdd = (item) =>
+    setItems((prev) => {
+        return [...prev, item];
+    });
+
+    const onRemove = (item) => 
+       setItems((prev) => {
+        return [...prev,item];
+       });
 
     return (
         <CartContext.Provider value = {{ items, clear }}>

@@ -7,14 +7,14 @@ import { Cart } from './components/Cart';
 import { NavBar } from './components/NavBar';
 import { ListContainer } from "./components/ListContainer";
 import { Error404 } from './components/Error404';
-
+import { CartProvider } from './contexts/CartContext';
 
 import "./App.css"
 
 
 
 function App () {
-  return(
+  return( <CartProvider>
   <BrowserRouter>
    <NavBar/>
    <Routes>
@@ -31,7 +31,9 @@ function App () {
     <Route path='*' element={<Error404/>}/>
 
    </Routes>
-  </BrowserRouter>);
+  </BrowserRouter>
+  </CartProvider>
+  );
 }
 
 export default App;

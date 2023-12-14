@@ -4,6 +4,8 @@ export const ItemCounter = () => {
     <button>-</button>
     <input/>
     <button>+</button>
-    <button> Agregar al carrito! </button>
+    <br/>
+    <br/>
+    <button> Agregar al carrito, Cuantas personas </button>
     </>)
 }
