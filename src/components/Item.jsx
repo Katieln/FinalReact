@@ -9,7 +9,7 @@ export const Item = ({item}) => {
       <Card.Body>
         <Card.Title>{item.title}</Card.Title>
         <Card.Text>
-          {item.description}
+          {item.price}
         </Card.Text>
         <Link to={`/items/${item.id}`}>
         <Button variant="primary">Comprar</Button>

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import Container from "react-bootstrap/Container";
 
-import { getFirestore, getDoc, doc, collection, getDocs } from "firebase/firestore";
+import { getFirestore, collection, getDocs, query, where} from "firebase/firestore";
 
 import { products } from "../data/products";
 import { ItemList } from "../components/ItemList";
@@ -22,9 +22,16 @@ export const ListContainer = (props) => {
         });
     }, []); */
 
+   
+
     useEffect(() => {
         const db = getFirestore();
-        const refCollection = collection(db, "Items");
+        const refCollection = !id ?
+        collection(db, "Items")
+        : query(
+            collection(db, "Items"),
+            where("category", "==", id));
+
         getDocs(refCollection).then((snapshot) => {
             if (snapshot.size === 0) console.log ("No Results 🥺");
             else
@@ -34,7 +41,7 @@ export const ListContainer = (props) => {
              })
              );
         });
-    }, []);
+    }, [id]);
     
 
    /*  useEffect(() => {
@@ -58,7 +65,7 @@ export const ListContainer = (props) => {
     console.log(items);
  */
     return (
-    <Container className="mt-4">
+    <Container className="md-2" >
         <h1>{props.greeting}</h1>
         <ItemList items={items}/>
     </Container>

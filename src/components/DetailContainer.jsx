@@ -2,8 +2,8 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import Container from "react-bootstrap/Container";
+import { getFirestore, getDoc, doc} from "firebase/firestore";
 
-import { products } from "../data/products";
 import {DetailsItem} from "./DetailsItem";
 
 
@@ -12,8 +12,19 @@ export const DetailContainer = () => {
     const [item, setItem] = useState(null);
 
     const { id } = useParams();
-    
 
+
+    useEffect(() => {
+        const db = getFirestore();
+        const refDoc = doc(db, "Items", id);
+    
+        getDoc(refDoc).then((snapshot) => {
+           setItem ({ id: snapshot.id , ...snapshot.data ()});
+             });
+    }, [id]);
+    
+    
+/* 
     useEffect(() => {
         const mypromise = new Promise ((resolve, reject) => {
             setTimeout (() => {
@@ -27,7 +38,7 @@ export const DetailContainer = () => {
                 setItem(findById);  
                 console.log(findById)   ;    
         });
-    }, [id]);
+    }, [id]); */
 
     return (
     <Container className="mt-4">

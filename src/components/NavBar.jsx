@@ -15,9 +15,13 @@ export const NavBar = () => {
            
            </Navbar.Brand>
           <Nav className="me-auto">
-            <NavLink to="category/OrienteMedio">Medio Oriente</NavLink>
-            <NavLink to="category/Cruceros">Cruceros</NavLink>
-            <NavLink to="category/Caribe">Caribe</NavLink>
+            <NavLink to="category/OrienteMedio">OrienteMedio</NavLink>
+            <br/>
+            <NavLink to="category/cruceros">cruceros</NavLink>
+            <br/>
+            <NavLink to="category/Caribe">caribe</NavLink>
+            <br/>
+            <NavLink to="category/NorthAmerica">NorthAmerica</NavLink>
           </Nav>
           <CartWidget/>
         </Container>
