@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import Card from 'react-bootstrap/Card';
 import { ItemCounter } from './ItemCounter';
 import { CartContext } from '../contexts/CartContext';
+import { Container } from 'react-bootstrap';
 
 export const DetailsItem = ({ item }) => {
 
@@ -18,8 +19,13 @@ export const DetailsItem = ({ item }) => {
       <Card.Text>
         {item.description}
         {item.details}
-        
+       
       </Card.Text>
+      <Container>
+      Quedan {item.stock} cupos
+      </Container>
+      <br/>
+
       <ItemCounter onAdd = {add}/>
     </Card.Body>
   </Card>);
