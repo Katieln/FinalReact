@@ -41,8 +41,8 @@ export const DetailContainer = () => {
     }, [id]); */
 
     return (
-    <Container className="mt-4">
-        {item ? <DetailsItem item={item} /> : <>Loading..</>}
+    <Container className="mt-4" >
+        {item ? <DetailsItem item={item}/> : <>Loading..</>}
        
     </Container>
     );

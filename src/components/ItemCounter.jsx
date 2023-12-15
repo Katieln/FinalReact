@@ -1,3 +1,4 @@
+import { Button} from "react-bootstrap"
 import { useState } from "react"
 
 export const ItemCounter = ({onAdd, stock, initial }) => {
@@ -5,20 +6,21 @@ export const ItemCounter = ({onAdd, stock, initial }) => {
     const [ count, setCount ] = useState(initial)
 
     const handleIncrease = () => {
-        setCount(prev => prev + 1)
+        if(stock > count){
+        setCount(prev => prev + 1)}
     }
 
     const handleDecrease = () => {
-        setCount(prev => prev - 1)
+        if(count > 1) {setCount(prev => prev - 1)}
     }
 
     return (
         <>
-    <button onClick={handleDecrease}>-</button>
+    <Button onClick={handleDecrease}>-</Button>
     <input value= {count} />
-    <button onClick={handleIncrease}>+</button>
+    <Button onClick={handleIncrease}>+</Button>
     <br/>
     <br/>
-    <button onClick={onAdd}> Agregar al carrito Cuantas personas </button>
+    <Button onClick= {() => onAdd (count)}> Agregar al carrito!! 😎 </Button>
     </>)
 }

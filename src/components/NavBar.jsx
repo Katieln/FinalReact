@@ -8,12 +8,12 @@ import { CartWidget } from "./CartWidget";
 
 export const NavBar = () => {
     return (
-        <Navbar bg="dark" data-bs-theme="dark">
-        <Container>
+        <Navbar bg="dark" data-bs-theme="dark" >
+        <Container >
           <Navbar.Brand>
            <NavLink to="/">Home</NavLink> 
            
-           </Navbar.Brand>
+           </Navbar.Brand >
           <Nav className="me-auto">
             <NavLink to="category/OrienteMedio">OrienteMedio</NavLink>
             <br/>
