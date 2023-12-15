@@ -68,9 +68,9 @@ export const ListContainer = (props) => {
  */
 
     return (
-        <Container style={{ display: "flex", flexWrap: "wrap" }} className="md-2">
+        <Container style={{ display: "flex", flexWrap: "wrap"}} className="md-2">
           <h1>{props.greeting} </h1>
-          <ItemList items={items} style={{ flexBasis: "10%", margin: "10px", flexWrap: "wrap" }} />
+          <ItemList items={items}/>
         </Container>
       );
     };

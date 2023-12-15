@@ -4,8 +4,8 @@ import Card from 'react-bootstrap/Card';
 
 export const Item = ({item}) => {
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={item.pictureURL} />
+    <Card style={{  display: "flex", flexWrap: "wrap", width: '13rem', margin: '8px' }}>
+      <Card.Img variant="top" src={item.pictureURL}/>
       <Card.Body>
         <Card.Title>{item.title}</Card.Title>
         <Card.Text>
