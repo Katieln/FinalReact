@@ -15,11 +15,12 @@ export const CartProvider = ({ children }) => {
     });
 
     
-    const onRemove = (item) => 
-       setItems((prev) => {
-        return [...prev,item];
-       });
-
+    const onRemove = (id) => {
+        const filterItems = items.filter(item => item.id !== id);
+        setItems(filterItems);
+    };
+       /* 
+ */
     return (
         <CartContext.Provider value = {{ items, clear, onAdd, onRemove }}>
             {children}

@@ -1,11 +1,35 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Container, Table, Form, Button } from "react-bootstrap";
 import { CartContext } from "../contexts/CartContext";
+import { useNavigate } from "react-router-dom";
 
 export const Cart = () => {
 
-    const { clear, items} = useContext(CartContext);
+    const navigate = useNavigate ();
+    const { clear, items, onRemove} = useContext(CartContext);
+    const [buyer, setBuyer] = useState ({
+      name: "",
+      phone: "",
+      email: "",
+      address: "",
+    })
 
+    if (!items.length) {
+      return (
+        <Container>
+          <h2>Volver al home y agregar algo a la compra</h2>
+          <button onClick={() => Navigate("/")}>Volver al home</button>
+        </Container>
+      )
+    }
+
+    const handleChange = () => {
+      setBuyer (buyer => {
+        return {
+          ...buyer,
+        }
+      })
+    }
    
     return (
     <Container className="mt-4">
@@ -28,7 +52,7 @@ export const Cart = () => {
       <td>
         <img src={item.pictureURL} width={150}/>
       </td>
-      <td > <button>x</button>  </td>
+      <td > <button onClick={()=> onRemove(item.id) }>x</button>  </td>
     </tr>
   ))}
   </tbody>
@@ -40,31 +64,46 @@ export const Cart = () => {
 <br/>
 
     <Form>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" />
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
-      </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Name</Form.Label>
-        <Form.Control type="text" placeholder="Write your Name" />
+
+    <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Full Name & Last Name</Form.Label>
+        <Form.Control type="text" value= {buyer.name} onChange={handleChange} placeholder="Write your Name and Last Name" />
         <Form.Text className="text-muted">
         </Form.Text>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Label>Phone</Form.Label>
+        <Form.Control type="number" value= {buyer.phone}  onChange={handleChange} placeholder="Phone" />
+        <Form.Text className="text-muted">
+          We'll never share your Phone number with anyone else.
+        </Form.Text>
+      </Form.Group>
+
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Email address</Form.Label>
+        <Form.Control type="email" value= {buyer.email} onChange={handleChange} placeholder="Enter email" />
+        <Form.Text className="text-muted">
+          We'll never share your email with anyone else.
+        </Form.Text>
+      </Form.Group>
+
+     
+      <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Address</Form.Label>
-        <Form.Control type="text" placeholder="Address" />
+        <Form.Control type="text" value= {buyer.address} onChange={handleChange} placeholder="Address" />
         <Form.Text className="text-muted">
           We'll never share your address with anyone else.
         </Form.Text>
       </Form.Group>
+
+    
+
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Check me out" />
       </Form.Group>
+
       <Button variant="primary" type="submit">
         Submit
       </Button>
