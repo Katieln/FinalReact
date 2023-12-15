@@ -66,10 +66,19 @@ export const ListContainer = (props) => {
 /* 
     console.log(items);
  */
+
     return (
+        <Container style={{ display: "flex", flexWrap: "wrap" }} className="md-2">
+          <h1>{props.greeting} </h1>
+          <ItemList items={items} style={{ flexBasis: "10%", margin: "10px", flexWrap: "wrap" }} />
+        </Container>
+      );
+    };
+
+/*     return (
     <Container className="md-2" >
         <h1>{props.greeting} </h1>
-        <ItemList items={items}/>
+        <ItemList  items={items} style={{ display: "flex", flexBasis: "30%", flexWrap: "wrap"}}/>
     </Container>
     );
-};
+}; */

@@ -12,7 +12,7 @@ export const DetailsItem = ({ item }) => {
     onAdd(item);
   };
 
-    return (<Card style={{ width: '30rem' }}>
+    return (<Card style={{ width: '25rem' }}>
     <Card.Img variant="top" src={item.pictureURL} />
     <Card.Body>
       <Card.Title>{item.title}</Card.Title>
@@ -22,11 +22,11 @@ export const DetailsItem = ({ item }) => {
        
       </Card.Text>
       <Container>
-      Quedan {item.stock} cupos
+      Quedan {item.stock} cupos !!
       </Container>
       <br/>
 
-      <ItemCounter onAdd = {add}/>
+      <ItemCounter onAdd = {add} stock={item.stock} initial={1}/>
     </Card.Body>
   </Card>);
 };

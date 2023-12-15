@@ -65,6 +65,7 @@ export const Cart = () => {
       <th >Producto</th>
       <th >Precio</th>
       <th >Imagen</th>
+      <th >Cantidad</th>
       <th >Eliminar Producto</th>
     </tr>
   </thead>
@@ -76,6 +77,7 @@ export const Cart = () => {
       <td>
         <img src={item.pictureURL} width={150}/>
       </td>
+      <td>{item.stock}</td>
       <td > <button onClick={()=> onRemove(item.id) }>x</button>  </td>
     </tr>
   ))}
