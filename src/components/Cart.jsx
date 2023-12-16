@@ -15,13 +15,15 @@ export const Cart = () => {
 
     const navigate = useNavigate ();
 
-    const { clear, items} = useContext(CartContext);
+    const { clear, items, onRemove } = useContext(CartContext);
     const [buyer, setBuyer] = useState (initialValue);
 
 
     const total = items.reduce((acumulador, valorActual) => acumulador + valorActual.price * valorActual.cantidad, 0);
 
     const [formValid, setFormValid] = useState(false);
+
+    
 
     const handleChange = (event) => {
      /*  console.log(event.target) */
@@ -79,12 +81,12 @@ setFormValid(isFormValid);
       <td>
         <img src={item.pictureURL} width={150}/>
       </td>
-      <td>{item.cantidad}</td>
+      <td>{Math.min(item.cantidad, item.stock)}</td>
       <td>${item.price * item.cantidad}</td>
       <td>{item.stock}</td>
       <td style={{display: "flex", flexDirection: 'row', justifyContent: 'space-between' }} > 
-      <Button onClick={() => onDecrease(item.id)}>-</Button>
-        <Button onClick={() => onIncrease(item.id)}>+</Button>
+      <Button onClick={() => onRemove(item.id)}>X</Button>
+   
               </td>
     </tr>
   ))}

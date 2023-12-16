@@ -1,7 +1,7 @@
 import { Button} from "react-bootstrap"
 import { useState } from "react"
 
-export const ItemCounter = ({onAdd, stock, initial }) => {
+export const ItemCounter = ({onAdd, stock, initial, cantidad }) => {
 
     const [ count, setCount ] = useState(initial)
 
@@ -15,8 +15,7 @@ export const ItemCounter = ({onAdd, stock, initial }) => {
     }
 
     const handleAdd =() => {
-        if(stock < count){alert("no")}
-        else{
+    {
         onAdd (count);
         setCount(initial);}
     }

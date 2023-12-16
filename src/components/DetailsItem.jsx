@@ -3,15 +3,15 @@ import { useContext } from 'react';
 import Card from 'react-bootstrap/Card';
 import { ItemCounter } from './ItemCounter';
 import { CartContext } from '../contexts/CartContext';
-import { Container } from 'react-bootstrap';
+
 
 export const DetailsItem = ({ item }) => {
 
   const {onAdd} = useContext(CartContext);
   const add = (cantidad) => {
-    onAdd(item, cantidad);
-
-  };
+      onAdd(item, cantidad);
+    }
+  ;
 
     return (<Card style={{ width: '20rem' }}>
     <Card.Img variant="top" src={item.pictureURL}  />
