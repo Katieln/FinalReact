@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Container, Table, Form, Button } from "react-bootstrap";
+import { Container, Table, Form, Button} from "react-bootstrap";
 import { CartContext } from "../contexts/CartContext";
 import { useNavigate } from "react-router-dom";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
@@ -21,6 +21,7 @@ export const Cart = () => {
 
     const total = items.reduce((acumulador, valorActual) => acumulador + valorActual.price * valorActual.cantidad, 0);
 
+    const [formValid, setFormValid] = useState(false);
 
     const handleChange = (event) => {
      /*  console.log(event.target) */
@@ -30,13 +31,15 @@ export const Cart = () => {
           [event.target.name]: event.target.value,
         };
       });
+     const isFormValid = Object.values(buyer).every((field) => field !== undefined && field !== null && field !== "");
+setFormValid(isFormValid);
     };
+
 
     const sendOrder = () => {
       const order = {
         buyer,
-        items,
-        
+        items,  
       };
 
       const db = getFirestore();
@@ -96,67 +99,70 @@ export const Cart = () => {
 <br/>
 <br/>
 
-    <Form>
+<Form>
+  <Form.Group className="mb-3">
+    <Form.Label>Full Name & Last Name</Form.Label>
+    <Form.Control
+      type="text"
+      value={buyer.name}
+      onChange={handleChange}
+      name="name"
+      placeholder="Write your Name and Last Name"
+      required
+    />
+    <Form.Text className="text-muted"></Form.Text>
+  </Form.Group>
 
-    <Form.Group className="mb-3" >
-        <Form.Label>Full Name & Last Name</Form.Label>
-        <Form.Control 
-        type="text" 
-        value= {buyer.name} 
-        onChange={handleChange} 
-        name="name"
-        placeholder="Write your Name and Last Name" />
-        <Form.Text className="text-muted">
-        </Form.Text>
-      </Form.Group>
+  <Form.Group className="mb-3">
+    <Form.Label>Phone</Form.Label>
+    <Form.Control
+      type="number"
+      value={buyer.phone}
+      onChange={handleChange}
+      name="phone"
+      placeholder="Phone"
+      required
+    />
+    <Form.Text className="text-muted">
+      We'll never share your Phone number with anyone else.
+    </Form.Text>
+  </Form.Group>
 
-      <Form.Group className="mb-3" >
-        <Form.Label>Phone</Form.Label>
-        <Form.Control 
-        type="number" 
-        value= {buyer.phone}  
-        onChange={handleChange} 
-        name="phone"
-        placeholder="Phone" />
-        <Form.Text className="text-muted">
-          We'll never share your Phone number with anyone else.
-        </Form.Text>
-      </Form.Group>
+  <Form.Group className="mb-3">
+    <Form.Label>Email</Form.Label>
+    <Form.Control
+      type="email"
+      value={buyer.email}
+      onChange={handleChange}
+      name="email"
+      placeholder="Enter email"
+      required
+    />
+    <Form.Text className="text-muted">
+      We'll never share your email with anyone else.
+    </Form.Text>
+  </Form.Group>
 
-      <Form.Group className="mb-3" >
-        <Form.Label>Email</Form.Label>
-        <Form.Control 
-        type="email" 
-        value= {buyer.email} 
-        onChange={handleChange} 
-        name="email"
-        placeholder="Enter email" />
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
-      </Form.Group>
-     
-      <Form.Group className="mb-3" >
-        <Form.Label>Address</Form.Label>
-        <Form.Control 
-        type="text" 
-        value= {buyer.address} 
-        onChange={handleChange} 
-        name="address"
-        placeholder="Address" />
-        <Form.Text className="text-muted">
-          We'll never share your address with anyone else.
-        </Form.Text>
-      </Form.Group>
+  <Form.Group className="mb-3">
+    <Form.Label>Address</Form.Label>
+    <Form.Control
+      type="text"
+      value={buyer.address}
+      onChange={handleChange}
+      name="address"
+      placeholder="Address"
+      required
+    />
+    <Form.Text className="text-muted">
+      We'll never share your address with anyone else.
+    </Form.Text>
+  </Form.Group>
 
-      <Form.Group className="mb-3" >
-        <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group>
+  <Button variant="primary" onClick={sendOrder} disabled={!formValid} >
+    Enviar
+  </Button>
+</Form>
 
-      <Button variant="primary" onClick={sendOrder}>
-        Submit
-      </Button>
-    </Form>
     </Container>);
 
 };
