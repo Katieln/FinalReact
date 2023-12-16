@@ -49,7 +49,7 @@ setFormValid(isFormValid);
 
       addDoc(orderCollection, order).then(({id}) => {
         if (id) {
-          alert("Su orden" + id + "ha sido completada!" );
+          alert("Su orden " + id + "ha sido completada!" );
           setBuyer(initialValue);
           clear();
         }
@@ -96,7 +96,11 @@ setFormValid(isFormValid);
     El total de tu compra es: ${total}
     </Container>
     <br/>
-        <Button onClick = {clear}>Vaciar Carrito</Button>
+
+    <Container style={{display: "flex", flexDirection: 'row'}}>
+        <Button style={{marginRight: "40px"}} onClick = {clear}>Vaciar Carrito</Button>
+          <Button onClick={() => navigate("/")}>Volver al home</Button>
+        </Container>
 
 <br/>
 <br/>
