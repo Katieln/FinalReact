@@ -11,20 +11,7 @@ import { ItemList } from "../components/ItemList";
 export const ListContainer = (props) => {
     const [items, setItems] = useState([]);
 
-
-
     const { id } = useParams();
-
-   /*  traer un solo doc o item de firebase
-        useEffect(() => {
-        const db = getFirestore();
-        const refDoc = doc(db, "Items", "UaVSsR0WKwIx4f3xkoMI");
-        getDoc(refDoc).then((snapshot) => {
-            console.log({ id: snapshot.id, ...snapshot.data()});
-        });
-    }, []); */
-
-   
 
     useEffect(() => {
         const db = getFirestore();
@@ -44,9 +31,27 @@ export const ListContainer = (props) => {
              );
         });
     }, [id]);
-    
 
-   /*  useEffect(() => {
+    return (
+        <Container className="md-2" style={{ display: "flex", flexWrap: "wrap"}} >
+          <h1>{props.greeting} </h1>
+          <Container className="md-2" style={{ display: "flex", flexWrap: "wrap"}} ></Container>
+          <ItemList items={items} />
+        </Container>
+      );
+    };
+
+    
+   /*  traer un solo doc o item de firebase
+        useEffect(() => {
+        const db = getFirestore();
+        const refDoc = doc(db, "Items", "UaVSsR0WKwIx4f3xkoMI");
+        getDoc(refDoc).then((snapshot) => {
+            console.log({ id: snapshot.id, ...snapshot.data()});
+        });
+    }, []); */
+
+       /*  useEffect(() => {
         const mypromise = new Promise ((resolve, reject) => {
             setTimeout (() => {
                 resolve(products);
@@ -66,14 +71,6 @@ export const ListContainer = (props) => {
 /* 
     console.log(items);
  */
-
-    return (
-        <Container style={{ display: "flex", flexWrap: "wrap"}} className="md-2">
-          <h1>{props.greeting} </h1>
-          <ItemList items={items}/>
-        </Container>
-      );
-    };
 
 /*     return (
     <Container className="md-2" >

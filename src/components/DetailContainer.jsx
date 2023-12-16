@@ -42,7 +42,9 @@ export const DetailContainer = () => {
 
     return (
     <Container className="mt-4" >
-        {item ? <DetailsItem item={item}/> : <>Loading..</>}
+       <Container style={{fontSize: "25px"}}> Welcome! ❤️ Details!!!! ✈️🚢😎</Container>
+       <br/>
+        {item ? <DetailsItem item={item} /> : <>Loading..</>}
        
     </Container>
     );

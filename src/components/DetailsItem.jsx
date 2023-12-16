@@ -8,8 +8,9 @@ import { Container } from 'react-bootstrap';
 export const DetailsItem = ({ item }) => {
 
   const {onAdd} = useContext(CartContext);
-  const add = () => {
-    onAdd(item);
+  const add = (cantidad) => {
+    onAdd(item, cantidad);
+
   };
 
     return (<Card style={{ width: '20rem' }}>
@@ -21,13 +22,14 @@ export const DetailsItem = ({ item }) => {
         {item.details}
         <br/>
         <br/>
-        <Container style={{display: "flex", display: "center"}}>
+        <>
       Precio: $ {item.price}
-      </Container>
+      </>
       </Card.Text>
-      <Container>
+      <>
       Quedan {item.stock} cupos !!
-      </Container>
+      </>
+      <br/>
       <br/>
 
       <ItemCounter onAdd = {add} stock={item.stock} initial={1}/>

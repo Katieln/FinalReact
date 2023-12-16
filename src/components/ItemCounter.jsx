@@ -14,13 +14,18 @@ export const ItemCounter = ({onAdd, stock, initial }) => {
         if(count > 1) {setCount(prev => prev - 1)}
     }
 
+    const handleAdd =() => {
+        onAdd (count);
+        setCount(initial);
+    }
+
     return (
         <>
     <Button onClick={handleDecrease}>-</Button>
-    <input value= {count} />
+    <input type="text" value={count} readOnly />
     <Button onClick={handleIncrease}>+</Button>
     <br/>
     <br/>
-    <Button onClick= {() => onAdd (count)}> Agregar al carrito!! 😎 </Button>
+    <Button onClick= {handleAdd}> ❤️ Agregar al carrito!! ✈️🚢</Button>
     </>)
 }

@@ -5,6 +5,6 @@ export const CartWidget = () => {
     return (
     <Link to="/Cart">
     <img src={cart} alt="carrito" height={50}/>
-    <span>5</span>
+    <span style={{ margin: '7px' }}>5</span>
     </Link>);
 };

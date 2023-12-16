@@ -9,10 +9,30 @@ export const CartProvider = ({ children }) => {
 
     const clear = () => setItems([]);
 
-    const onAdd = (item) =>
-    setItems((prev) => {
-        return [...prev, item];
-    });
+    const onAdd = (item, cantidad) => {
+        console.log(cantidad)
+        const exist = items.some ( i => i.id === item.id);
+        console.log(exist);
+        if (exist){
+            const updateItems = items.map (i => {
+                if(i.id === item.id){
+                    return {
+                        ...i,
+                        cantidad: i.cantidad = cantidad
+                    };
+                }
+                else {
+                    return i;
+                }
+            });
+            setItems (updateItems);
+        }
+        else {
+            setItems((prev) => {
+                return [...prev, {...item, cantidad}];
+            });
+        }
+    }
 
     
     const onRemove = (id) => {

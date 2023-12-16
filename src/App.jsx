@@ -17,14 +17,14 @@ function App () {
    <NavBar/>
    <Routes>
     
-    <Route path="/" element={<ListContainer greeting=" Hello Moon! holi ❤️ LUNA 🧟‍♀️😎🕸️"/>}/>
+    <Route path="/" element={<ListContainer greeting=" Hello Everyone! Welcome!! ❤️ Travel Experience ✈️🚢😎"/>}/>
 
-    <Route path="/category/:id" element={<ListContainer greeting="Hello Moon! ❤️ Categorias!!!! 🧟‍♀️😎🕸️"/>}/>
+    <Route path="/category/:id" element={<ListContainer greeting="Welcome! ❤️ Categories!!!! ✈️🚢😎"/>}/>
 
     <Route path="/Cart" element={ <Cart/> }/>
 
     <Route path="/items/:id"
-    element={ <> <DetailContainer/> </>}/>
+    element={ <DetailContainer greeting="Welcome! ❤️ Categories!!!! ✈️🚢😎"/>}/>
 
     <Route path='*' element={<Error404/>}/>
 
