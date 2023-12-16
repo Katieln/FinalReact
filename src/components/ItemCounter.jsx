@@ -15,8 +15,10 @@ export const ItemCounter = ({onAdd, stock, initial }) => {
     }
 
     const handleAdd =() => {
+        if(stock < count){alert("no")}
+        else{
         onAdd (count);
-        setCount(initial);
+        setCount(initial);}
     }
 
     return (

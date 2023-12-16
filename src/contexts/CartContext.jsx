@@ -10,15 +10,16 @@ export const CartProvider = ({ children }) => {
     const clear = () => setItems([]);
 
     const onAdd = (item, cantidad) => {
-        console.log(cantidad)
+       
         const exist = items.some ( i => i.id === item.id);
-        console.log(exist);
+      
         if (exist){
             const updateItems = items.map (i => {
+
                 if(i.id === item.id){
                     return {
                         ...i,
-                        cantidad: i.cantidad = cantidad
+                        cantidad: i.cantidad + cantidad,
                     };
                 }
                 else {
@@ -26,6 +27,7 @@ export const CartProvider = ({ children }) => {
                 }
             });
             setItems (updateItems);
+   
         }
         else {
             setItems((prev) => {
@@ -39,11 +41,11 @@ export const CartProvider = ({ children }) => {
         const filterItems = items.filter(item => item.id !== id);
         setItems(filterItems);
     };
-       /* 
- */
+    console.log(items)
     return (
         <CartContext.Provider value = {{ items, clear, onAdd, onRemove }}>
             {children}
         </CartContext.Provider>
     );
 };
+

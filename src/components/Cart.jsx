@@ -14,20 +14,16 @@ const initialValue = {
 export const Cart = () => {
 
     const navigate = useNavigate ();
-    const { clear, items, onRemove} = useContext(CartContext);
+
+    const { clear, items} = useContext(CartContext);
     const [buyer, setBuyer] = useState (initialValue);
 
-   /*  if (!items.length) {
-      return (
-        <Container>
-          <h2>Volver al home y agregar algo a la compra</h2>
-          <button onClick={() => Navigate("/")}>Volver al home</button>
-        </Container>
-      )
-    } */
+
+    const total = items.reduce((acumulador, valorActual) => acumulador + valorActual.price * valorActual.cantidad, 0);
+
 
     const handleChange = (event) => {
-      console.log(event.target)
+     /*  console.log(event.target) */
       setBuyer (buyer => {
         return {
           ...buyer,
@@ -40,6 +36,7 @@ export const Cart = () => {
       const order = {
         buyer,
         items,
+        
       };
 
       const db = getFirestore();
@@ -67,32 +64,39 @@ export const Cart = () => {
       <th >Imagen</th>
       <th >Cantidad</th>
       <th >Total</th>
-      <th >Eliminar Producto</th>
+      <th >Stock</th>
+      <th >Eliminar</th>
     </tr>
   </thead>
   <tbody>
   {items?.map ((item) => (
       <tr key={item.id}>
       <td>{item.title}</td>
-      <td>{item.price}</td>
+      <td>${item.price}</td>
       <td>
         <img src={item.pictureURL} width={150}/>
       </td>
+      <td>{item.cantidad}</td>
+      <td>${item.price * item.cantidad}</td>
       <td>{item.stock}</td>
-      <td>{item.stock}</td>
-      <td > <button onClick={()=> onRemove(item.id) }>x</button>  </td>
+      <td style={{display: "flex", flexDirection: 'row', justifyContent: 'space-between' }} > 
+      <Button onClick={() => onDecrease(item.id)}>-</Button>
+        <Button onClick={() => onIncrease(item.id)}>+</Button>
+              </td>
     </tr>
   ))}
   </tbody>
     </Table>
-    
-        <button onClick = {clear}>Vaciar Carrito</button>
+    <Container style={{fontSize: "20px"}}>
+    El total de tu compra es: ${total}
+    </Container>
+    <br/>
+        <Button onClick = {clear}>Vaciar Carrito</Button>
 
 <br/>
 <br/>
 
     <Form>
-
 
     <Form.Group className="mb-3" >
         <Form.Label>Full Name & Last Name</Form.Label>
@@ -131,7 +135,6 @@ export const Cart = () => {
           We'll never share your email with anyone else.
         </Form.Text>
       </Form.Group>
-
      
       <Form.Group className="mb-3" >
         <Form.Label>Address</Form.Label>
@@ -146,8 +149,6 @@ export const Cart = () => {
         </Form.Text>
       </Form.Group>
 
-    
-
       <Form.Group className="mb-3" >
         <Form.Check type="checkbox" label="Check me out" />
       </Form.Group>
@@ -156,11 +157,17 @@ export const Cart = () => {
         Submit
       </Button>
     </Form>
-  
-
-
-
     </Container>);
 
 };
 
+
+
+   /*  if (!items.length) {
+      return (
+        <Container>
+          <h2>Volver al home y agregar algo a la compra</h2>
+          <button onClick={() => Navigate("/")}>Volver al home</button>
+        </Container>
+      )
+    } */
